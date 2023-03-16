@@ -52,14 +52,8 @@ import ListaDeTarefas from './components/ListaDeTarefas.vue';
 
 <template>
   <div class="container">
-    <Cabecalho tarefas-pendentes="10" />
-    <Formulario/>
-    <ListaDeTarefas/>
+    <Cabecalho :tarefas-pendentes="getTarefasPendentes().length" />
+    <Formulario :trocar-filtro="evento => estado.filtro = evento.target.value" :tarefa-temporaria="estado.tarefaTemporaria" :edita-tarefa-temp="evento => estado.tarefaTemporaria = evento.target.value" :cadastra-tarefa="cadastraTarefa"/>
+    <ListaDeTarefas :tarefas="getTarefasFiltradas()"/>
   </div>
 </template>
-
-<style scoped>
-.done{
-  text-decoration: line-through;
-}
-</style>
